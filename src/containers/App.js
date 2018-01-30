@@ -7,6 +7,7 @@ import {
     connect
 } from 'react-redux';
 import {Link} from 'react-router-dom';
+require('./App.scss');
 
 class App extends Component {
     _onChange = (value) => {
@@ -15,7 +16,7 @@ class App extends Component {
     render() {
         const {message} = this.props.messageReducer;
         return (
-            <div>
+            <div className="test">
             <InputPreview
               value={message}
               onChange={this._onChange}/>

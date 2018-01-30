@@ -1,8 +1,9 @@
-var webpack = require('webpack');
-var path = require('path');
+const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var parentDir = path.join(__dirname, '../');
-var srcDir = path.join(__dirname, '../src');
+const parentDir = path.join(__dirname, '../');
+const srcDir = path.join(__dirname, '../src');
 
 module.exports = {
     entry: [
@@ -16,7 +17,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loaders: ["style-loader", "css-loder", "scss-loader"]
+                loaders: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -44,12 +45,15 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebpackPlugin({
+            title: 'Knowledge Management',
+            template: parentDir + '/public/index.html'
+        })
+    ],
     output: {
         path: parentDir + '/dist',
         filename: 'bundle.js'
-    },
-    devServer: {
-        contentBase: parentDir,
-        historyApiFallback: true
     }
-}
+};
