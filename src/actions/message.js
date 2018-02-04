@@ -11,3 +11,14 @@ export const setMessage = (message) => {
         })
     }
 }
+
+export const setErrorMessage = (error) => {
+    return dispatch => {
+        dispatch({
+            type: "error",
+            payload: {
+                error
+            }
+        });
+    };
+}

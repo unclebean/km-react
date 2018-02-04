@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 export default class InputPreview extends React.Component {
  render () {
    return (
@@ -12,3 +14,8 @@ export default class InputPreview extends React.Component {
    )
  }
 }
+
+InputPreview.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func
+};

@@ -11,6 +11,11 @@ export default (state = initState, action) => {
                 ...state,
                 message: action.payload.message
             }
+        case 'error':
+            return {
+                ...state,
+                error: action.payload.error
+            }
         default:
             return state
     }
